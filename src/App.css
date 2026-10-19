@@ -39,6 +39,11 @@
 .brand-light { color: #718079; font-weight: 500; }
 .account-label { display: flex; align-items: center; gap: 8px; color: #69786f; font-size: 12px; }
 .status-dot, .balance-indicator { width: 7px; height: 7px; border-radius: 50%; background: #35a879; }
+.screen-nav { display: flex; gap: 7px; padding: 12px 0 0; }
+.screen-tab { padding: 7px 13px; border: 1px solid transparent; border-radius: 7px; color: #738078; background: transparent; font: inherit; font-size: 11px; font-weight: 600; cursor: pointer; }
+.screen-tab:hover { color: #276b4e; background: #f1f7f2; }
+.screen-tab.active { border-color: #dcece2; color: #276b4e; background: #eff7f1; }
+.screen-tab:focus-visible { outline: 3px solid #75b39466; outline-offset: 2px; }
 
 .welcome { padding: 69px 0 28px; }
 .eyebrow { color: #54816d; font-size: 10px; letter-spacing: 1.8px; font-weight: 750; }

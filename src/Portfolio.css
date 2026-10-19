@@ -1,0 +1,39 @@
+.portfolio-page { width: min(100%, 1120px); margin: 0 auto; padding: 57px 56px 28px; }
+.portfolio-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.portfolio-eyebrow { color: #54816d; font-size: 10px; letter-spacing: 1.8px; font-weight: 750; }
+.portfolio-header h1 { margin: 11px 0 7px; color: #18352a; font-size: 42px; line-height: 1.15; letter-spacing: -1.7px; font-weight: 650; }
+.portfolio-header p { margin: 0; color: #78877f; font-size: 13px; }
+.demo-badge { display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px; border: 1px solid #dcece2; border-radius: 20px; color: #327857; background: #f0f8f2; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.demo-badge span { width: 7px; height: 7px; border-radius: 50%; background: #48a474; }
+.portfolio-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 32px; }
+.summary-card { min-height: 130px; padding: 18px 17px; display: flex; flex-direction: column; align-items: flex-start; border: 1px solid #e8eee9; border-radius: 12px; background: #fff; box-shadow: 0 4px 14px #173b2607; }
+.summary-label { color: #829087; font-size: 9px; letter-spacing: 1px; font-weight: 750; }
+.summary-card strong { margin-top: 14px; color: #263d32; font-size: 23px; letter-spacing: -.7px; font-weight: 650; white-space: nowrap; }
+.summary-card small { margin-top: 7px; color: #8b9790; font-size: 9px; line-height: 1.4; }
+.cash-summary { background: #f5faf6; border-color: #e3eee6; }
+.total-summary { background: #176e52; border-color: #176e52; }
+.total-summary .summary-label, .total-summary small { color: #c0dfd0; }
+.total-summary strong { color: #fff; }
+.pnl-summary strong { color: #25835e; }
+.holdings-panel { margin-top: 24px; overflow: hidden; border: 1px solid #e8eee9; border-radius: 13px; background: #fff; box-shadow: 0 4px 14px #173b2607; }
+.holdings-heading { min-height: 73px; padding: 16px 21px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #edf1ee; }
+.holdings-heading h2 { margin: 0 0 4px; color: #263d32; font-size: 15px; font-weight: 650; }
+.holdings-heading p { margin: 0; color: #8b9790; font-size: 10px; }
+.holdings-count { padding: 6px 9px; border-radius: 14px; color: #5a7566; background: #f1f6f2; font-size: 10px; }
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+thead { background: #fbfcfb; }
+th { padding: 12px 20px; color: #87938b; font-size: 9px; letter-spacing: .8px; font-weight: 700; white-space: nowrap; }
+td { padding: 13px 20px; border-top: 1px solid #f0f3f0; color: #52635a; font-size: 12px; white-space: nowrap; }
+td > strong { color: #2e4338; font-size: 12px; font-weight: 650; }
+.stock-name { display: flex; align-items: center; gap: 10px; }
+.stock-name > span:last-child { display: flex; flex-direction: column; gap: 2px; }
+.stock-name strong { color: #2e4338; font-size: 12px; font-weight: 700; }
+.stock-name small { color: #8b9790; font-size: 9px; }
+.stock-logo { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 9px; font-size: 12px; font-weight: 750; }
+.stock-logo.apple { color: #4b5150; background: #f0f2f1; }.stock-logo.microsoft { color: #3478b9; background: #edf5fc; }.stock-logo.nvidia { color: #4c772d; background: #eef5e9; }
+.table-note { padding: 12px 20px; border-top: 1px solid #edf1ee; color: #8b9790; font-size: 10px; }
+.portfolio-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 28px; padding-top: 15px; border-top: 1px solid #e9eee9; color: #93a098; font-size: 10px; }
+.portfolio-footer > span:first-child { font-size: 9px; letter-spacing: 1.4px; font-weight: 700; }.portfolio-footer b { margin-left: 4px; color: #3c9b73; }
+@media (max-width: 850px) { .portfolio-page { padding-inline: 28px; }.portfolio-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .portfolio-page { padding: 38px 20px 24px; }.portfolio-header { align-items: flex-start; flex-direction: column; gap: 16px; }.portfolio-header h1 { font-size: 36px; }.portfolio-summary { gap: 10px; margin-top: 24px; }.summary-card { min-height: 120px; padding: 15px 13px; }.summary-card strong { font-size: 19px; }.summary-label { font-size: 8px; }.portfolio-footer { align-items: flex-start; flex-direction: column; gap: 9px; }.holdings-heading { padding-inline: 15px; } th, td { padding-inline: 13px; } }
