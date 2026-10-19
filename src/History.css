@@ -1,0 +1,25 @@
+.history-page { width: min(100%, 1120px); margin: 0 auto; padding: 45px 56px 28px; }
+.history-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.history-eyebrow { color: #54816d; font-size: 10px; letter-spacing: 1.8px; font-weight: 750; }
+.history-header h1 { margin: 11px 0 7px; color: #18352a; font-size: 42px; line-height: 1.15; letter-spacing: -1.7px; font-weight: 650; }
+.history-header p { margin: 0; color: #78877f; font-size: 13px; }
+.history-panel { margin-top: 27px; overflow: hidden; border: 1px solid #e8eee9; border-radius: 13px; background: #fff; box-shadow: 0 4px 14px #173b2607; }
+.history-panel-heading { min-height: 78px; padding: 17px 21px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #edf1ee; }
+.history-panel-heading h2 { margin: 0 0 5px; color: #263d32; font-size: 15px; font-weight: 650; }
+.history-panel-heading p { margin: 0; color: #64816f; font-size: 10px; }
+.history-count { padding: 6px 9px; border-radius: 14px; color: #5a7566; background: #f1f6f2; font-size: 10px; }
+.history-table-wrap { overflow-x: auto; }
+.history-table { width: 100%; border-collapse: collapse; text-align: left; }
+.history-table thead { background: #fbfcfb; }
+.history-table th { padding: 13px 16px; color: #87938b; font-size: 8px; letter-spacing: .65px; font-weight: 700; white-space: nowrap; }
+.history-table td { padding: 14px 16px; border-top: 1px solid #f0f3f0; color: #52635a; font-size: 11px; white-space: nowrap; }
+.history-table td strong { color: #2e4338; font-size: 11px; font-weight: 650; }
+.history-symbol { color: #2e4338; font-weight: 700; }
+.transaction-type { display: inline-flex; min-width: 45px; justify-content: center; padding: 5px 8px; border-radius: 12px; font-size: 9px; font-weight: 750; letter-spacing: .35px; }
+.transaction-type.buy { color: #28734f; background: #eaf5ed; }.transaction-type.sell { color: #966b3f; background: #faf2e7; }
+.history-empty { display: grid; min-height: 170px; place-items: center; color: #849188; font-size: 13px; }
+.history-note { padding: 12px 20px; border-top: 1px solid #edf1ee; color: #8b9790; font-size: 10px; }
+.history-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 28px; padding-top: 15px; border-top: 1px solid #e9eee9; color: #93a098; font-size: 10px; }
+.history-footer > span:first-child { font-size: 9px; letter-spacing: 1.4px; font-weight: 700; }.history-footer b { margin-left: 4px; color: #3c9b73; }
+@media (max-width: 850px) { .history-page { padding-inline: 28px; } }
+@media (max-width: 650px) { .history-page { padding: 38px 20px 24px; }.history-header h1 { font-size: 36px; }.history-footer { align-items: flex-start; flex-direction: column; gap: 9px; }.history-panel-heading { padding-inline: 15px; } }
