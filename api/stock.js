@@ -44,12 +44,18 @@ export default async function handler(req, res) {
         });
       }
   
-      const latestDate = Object.keys(history).sort().pop();
+      const dates = Object.keys(history).sort();
+      const latestDate = dates[dates.length - 1];
+      const priceHistory = dates.slice(-30).map((date) => ({
+        date,
+        price: Number(history[date]['4. close']),
+      }));
   
       return res.status(200).json({
         symbol,
         price: Number(history[latestDate]['4. close']),
         updatedAt: latestDate,
+        history: priceHistory,
       });
     } catch {
       return res.status(500).json({

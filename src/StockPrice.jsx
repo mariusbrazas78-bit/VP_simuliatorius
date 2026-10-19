@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import StockChart from './StockChart.jsx';
 
 const SYMBOLS = ['AAPL', 'MSFT', 'TSLA'];
 
@@ -69,6 +70,7 @@ export default function StockPrice() {
             <strong>{stock.symbol}</strong>: ${Number(stock.price).toFixed(2)} USD
           </p>
           <p>Duomenų data: {stock.updatedAt}</p>
+          <StockChart history={stock.history} />
         </div>
       )}
     </section>
