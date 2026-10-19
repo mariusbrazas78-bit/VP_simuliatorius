@@ -67,10 +67,10 @@ export default function StockPrice() {
       {!loading && !error && stock && (
         <div>
           <p>
-            <strong>{stock.symbol}</strong>: ${Number(stock.price).toFixed(2)} USD
+            <strong>{stock.symbol}</strong>: {Number(stock.price).toFixed(2)} {stock.currency}
           </p>
           <p>Duomenų data: {stock.updatedAt}</p>
-          <StockChart history={stock.history} />
+          <StockChart history={stock.history} currency={stock.currency} />
         </div>
       )}
     </section>

@@ -46,9 +46,9 @@ export default function ProfitLossChart({ data = [] }) {
         />
       </svg>
       <figcaption>
-        {firstPoint.date}: ${Number(firstPoint.profitLoss).toFixed(2)} USD
+        {firstPoint.date}: {Number(firstPoint.profitLoss).toFixed(2)} €
         {' — '}
-        {lastPoint.date}: ${Number(lastPoint.profitLoss).toFixed(2)} USD
+        {lastPoint.date}: {Number(lastPoint.profitLoss).toFixed(2)} €
       </figcaption>
     </figure>
   );

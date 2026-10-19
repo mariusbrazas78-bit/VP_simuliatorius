@@ -2,7 +2,7 @@ const WIDTH = 600;
 const HEIGHT = 260;
 const PADDING = 36;
 
-export default function StockChart({ history = [] }) {
+export default function StockChart({ history = [], currency = 'USD' }) {
   if (!history.length) {
     return <p>Grafikui duomenų nėra</p>;
   }
@@ -46,9 +46,9 @@ export default function StockChart({ history = [] }) {
         />
       </svg>
       <figcaption>
-        <span>{firstPoint.date}: ${Number(firstPoint.price).toFixed(2)} USD</span>
+        <span>{firstPoint.date}: {Number(firstPoint.price).toFixed(2)} {currency}</span>
         {' — '}
-        <span>{lastPoint.date}: ${Number(lastPoint.price).toFixed(2)} USD</span>
+        <span>{lastPoint.date}: {Number(lastPoint.price).toFixed(2)} {currency}</span>
       </figcaption>
     </figure>
   );

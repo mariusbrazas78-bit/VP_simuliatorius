@@ -1,3 +1,11 @@
+export const stockHistoryDemoData = [
+  { date: '2026-10-12', price: 248.5 },
+  { date: '2026-10-13', price: 251.2 },
+  { date: '2026-10-14', price: 249.8 },
+  { date: '2026-10-15', price: 254.1 },
+  { date: '2026-10-16', price: 257.35 },
+];
+
 export const portfolioDemoData = [
   { date: '2026-10-12', value: 10000 },
   { date: '2026-10-13', value: 10250 },

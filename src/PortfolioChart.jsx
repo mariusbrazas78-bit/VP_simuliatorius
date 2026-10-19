@@ -46,9 +46,9 @@ export default function PortfolioChart({ data = [] }) {
         />
       </svg>
       <figcaption>
-        {firstPoint.date}: ${Number(firstPoint.value).toFixed(2)} USD
+        {firstPoint.date}: {Number(firstPoint.value).toFixed(2)} €
         {' — '}
-        {lastPoint.date}: ${Number(lastPoint.value).toFixed(2)} USD
+        {lastPoint.date}: {Number(lastPoint.value).toFixed(2)} €
       </figcaption>
     </figure>
   );
