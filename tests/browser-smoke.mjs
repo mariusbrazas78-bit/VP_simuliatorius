@@ -97,6 +97,7 @@ try {
   await waitText('Sandorių kol kas nėra.')
   await nav('Trade')
   await waitText('Kainos duomenų data:')
+  await page.getByRole('region', { name: 'AAPL kainos grafikas' }).getByRole('img').waitFor()
   assert.deepEqual(await page.locator('#stock-select option').evaluateAll((options) => options.map((option) => option.value)), ['AAPL', 'MSFT', 'TSLA'])
   await page.locator('#share-quantity').fill('2')
   await buy().evaluate((button) => { button.click(); button.click() })

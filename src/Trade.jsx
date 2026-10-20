@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import StockChart from './StockChart.jsx'
 import { STOCKS, validateTrade } from './lib/stocks'
 import { money } from './lib/format'
 import { executeTrade } from './lib/trading'
@@ -79,6 +80,13 @@ function Trade({ onBack, onTradeCompleted, disabled }) {
         <aside className="trade-info-card"><span className="info-mark" aria-hidden="true">i</span><h2>Mokomoji prekyba</h2>
           <p>Naudojamos istorinės dienos uždarymo kainos EUR. Galutinę kainą serveris gauna dar kartą vykdydamas sandorį, todėl suma gali skirtis nuo numatomos.</p>
           <p>Serveris patikrina balansą ir akcijų kiekį. Sėkmingas sandoris išsaugomas duomenų bazėje.</p>
+          <section className="trade-chart" aria-label={`${symbol} kainos grafikas`}>
+            <h3>{symbol} kainos kitimas</h3>
+            <p className="trade-chart-note">Istorinės dienos uždarymo kainos · EUR</p>
+            {loading ? <p role="status">Įkeliamas grafikas…</p>
+              : quoteError ? <p>Grafiko duomenys šiuo metu nepasiekiami.</p>
+                : <StockChart history={Array.isArray(quote?.history) ? quote.history : []} currency="EUR" />}
+          </section>
           <div className="info-divider" /><div className="info-stat"><span>Pradinis kapitalas</span><strong>10 000 EUR</strong></div>
           <button type="button" className="back-to-portfolio" disabled={pending} onClick={onBack}>← Grįžti į Portfolio</button>
         </aside>
