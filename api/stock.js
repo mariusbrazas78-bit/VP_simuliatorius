@@ -1,3 +1,5 @@
+import { withStockCache } from './stock-cache.js';
+
 const ECB_CACHE_TTL = 6 * 60 * 60 * 1000;
 const ecbRateCache = new Map();
 
@@ -91,7 +93,7 @@ export function createEurStockResponse(symbol, usdHistory, exchangeRates) {
   };
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
     const symbol = String(req.query.symbol || '').toUpperCase();
   
     if (!['AAPL', 'MSFT', 'TSLA'].includes(symbol)) {
@@ -123,7 +125,7 @@ export default async function handler(req, res) {
       const data = await response.json();
 
       if (data.Information || data.Note) {
-        return res.status(502).json({
+        return res.status(429).json({
           error: 'Alpha Vantage laikinai riboja užklausas. Palaukite ir bandykite vėliau.',
         });
       }
@@ -163,4 +165,6 @@ export default async function handler(req, res) {
       });
     }
   }
+
+export default withStockCache(handler);
   
