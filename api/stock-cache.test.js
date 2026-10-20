@@ -68,3 +68,30 @@ test('does not cache ordinary server failures', async () => {
   await invoke(handler)
   assert.equal(calls, 2)
 })
+
+test('new instances reuse saved quotes only until their original expiry', async () => {
+  let time = 60000
+  let calls = 0
+  const options = {
+    now: () => time,
+    ttlMs: 120000,
+    initialQuotes: [{ fetchedAt: 0, body: {
+      symbol: 'AAPL', currency: 'EUR', price: 100, updatedAt: '2026-10-19',
+    } }],
+  }
+  const provider = (req, res) => {
+    calls++
+    return res.status(429).json({ error: 'Provider limit' })
+  }
+  const first = await invoke(withStockCache(provider, options))
+  assert.equal(first.status, 200)
+  assert.equal(first.headers['Vercel-CDN-Cache-Control'], 'public, s-maxage=60')
+  time = 90000
+  const restarted = await invoke(withStockCache(provider, options))
+  assert.equal(restarted.status, 200)
+  assert.equal(restarted.headers['Vercel-CDN-Cache-Control'], 'public, s-maxage=30')
+  assert.equal(calls, 0)
+  time = 120001
+  assert.equal((await invoke(withStockCache(provider, options))).status, 429)
+  assert.equal(calls, 1)
+})

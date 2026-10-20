@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { afterEach, test } from 'node:test';
-import handler, {
+import {
+  handler,
   convertStockHistory,
   createEurStockResponse,
   findRateForDate,

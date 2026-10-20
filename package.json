@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "test": "node --test api/stock.test.js tests/trading.test.mjs tests/database.test.mjs supabase/functions/trade/stock-prices.test.mjs",
+    "test": "node --test api/stock.test.js api/stock-cache.test.js tests/trading.test.mjs tests/database.test.mjs supabase/functions/trade/stock-prices.test.mjs",
     "test:browser": "node tests/browser-smoke.mjs",
     "preview": "vite preview"
   },

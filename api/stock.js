@@ -1,4 +1,5 @@
 import { withStockCache } from './stock-cache.js';
+import { savedStockQuotes } from './saved-stock-quotes.js';
 
 const ECB_CACHE_TTL = 6 * 60 * 60 * 1000;
 const ecbRateCache = new Map();
@@ -93,7 +94,7 @@ export function createEurStockResponse(symbol, usdHistory, exchangeRates) {
   };
 }
 
-async function handler(req, res) {
+export async function handler(req, res) {
     const symbol = String(req.query.symbol || '').toUpperCase();
   
     if (!['AAPL', 'MSFT', 'TSLA'].includes(symbol)) {
@@ -166,5 +167,5 @@ async function handler(req, res) {
     }
   }
 
-export default withStockCache(handler);
+export default withStockCache(handler, { initialQuotes: savedStockQuotes });
   
