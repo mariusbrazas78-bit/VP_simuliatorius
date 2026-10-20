@@ -44,6 +44,7 @@ export default function PortfolioChart({ data = [] }) {
           strokeLinejoin="round"
           strokeLinecap="round"
         />
+        {data.length === 1 && <circle cx={PADDING} cy={HEIGHT - PADDING} r="4" fill="#2563eb" />}
       </svg>
       <figcaption>
         {firstPoint.date}: {Number(firstPoint.value).toFixed(2)} €

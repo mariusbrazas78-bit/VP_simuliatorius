@@ -1,40 +1,21 @@
-import PortfolioChart from './PortfolioChart.jsx';
-import ProfitLossChart from './ProfitLossChart.jsx';
-import StockChart from './StockChart.jsx';
-import {
-  portfolioDemoData,
-  profitLossDemoData,
-  stockHistoryDemoData,
-} from './chartDemoData.js';
+import PortfolioChart from './PortfolioChart.jsx'
+import ProfitLossChart from './ProfitLossChart.jsx'
+import StockPrice from './StockPrice.jsx'
+import { dateTime } from './lib/format'
 
-const sectionStyle = {
-  marginBottom: '24px',
-  padding: '24px',
-  border: '1px solid #e5e7eb',
-  borderRadius: '12px',
-  background: '#fff',
-};
-
-export default function ChartPreview() {
-  return (
-    <main style={{ maxWidth: '900px', margin: '0 auto', padding: '32px 20px' }}>
-      <h1>Grafikų peržiūra</h1>
-      <p>Visi šiame puslapyje rodomi duomenys yra demonstraciniai.</p>
-
-      <section style={sectionStyle}>
-        <h2>Akcijos kainos istorija (AAPL)</h2>
-        <StockChart history={stockHistoryDemoData} />
-      </section>
-
-      <section style={sectionStyle}>
-        <h2>Portfelio vertė</h2>
-        <PortfolioChart data={portfolioDemoData} />
-      </section>
-
-      <section style={sectionStyle}>
-        <h2>Pelnas ir nuostolis</h2>
-        <ProfitLossChart data={profitLossDemoData} />
-      </section>
-    </main>
-  );
+export default function ChartPreview({ snapshots = [], loading = false, error = '' }) {
+  const data = snapshots.map((snapshot) => ({
+    date: dateTime(snapshot.created_at),
+    value: Number(snapshot.total_value),
+    profitLoss: Number(snapshot.total_value) - 10000,
+  }))
+  return <section className="integration-page">
+    <div className="integration-page-heading"><span>EUR · API IR DUOMENŲ BAZĖS DUOMENYS</span><h1>Grafikai</h1></div>
+    <div className="chart-panel"><StockPrice /></div>
+    <div className="chart-panel"><h2>Portfelio vertė (EUR)</h2>
+      {loading ? <p role="status">Įkeliami duomenys…</p> : error ? <p role="alert">{error}</p> : <PortfolioChart data={data} />}</div>
+    <div className="chart-panel"><h2>Pelnas / nuostolis (EUR)</h2><p>Portfelio vertė − pradinis 10 000 EUR kapitalas.</p>
+      {loading ? <p role="status">Įkeliami duomenys…</p> : error ? <p role="alert">{error}</p> : <ProfitLossChart data={data} />}</div>
+    <p>Iki 500 naujausių portfelio įrašų. Datos Vilniaus laiku. Vertė išsaugoma po sėkmingo sandorio.</p>
+  </section>
 }

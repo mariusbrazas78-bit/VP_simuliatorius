@@ -2,7 +2,7 @@ const WIDTH = 600;
 const HEIGHT = 260;
 const PADDING = 36;
 
-export default function StockChart({ history = [], currency = 'USD' }) {
+export default function StockChart({ history = [], currency = 'EUR' }) {
   if (!history.length) {
     return <p>Grafikui duomenų nėra</p>;
   }
@@ -44,6 +44,7 @@ export default function StockChart({ history = [], currency = 'USD' }) {
           strokeLinejoin="round"
           strokeLinecap="round"
         />
+        {history.length === 1 && <circle cx={PADDING} cy={HEIGHT - PADDING} r="4" fill="#2563eb" />}
       </svg>
       <figcaption>
         <span>{firstPoint.date}: {Number(firstPoint.price).toFixed(2)} {currency}</span>
