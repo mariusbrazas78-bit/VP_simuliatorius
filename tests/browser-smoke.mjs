@@ -145,6 +145,12 @@ try {
   await waitText('Sandoris atliktas, bet duomenų atnaujinti nepavyko.')
   assert.equal(state.transactions.length, 3)
   assert.equal(await buy().isDisabled(), true)
+  // A database failure must block trading, not browsing other stocks.
+  assert.equal(await page.locator('#stock-select').isEnabled(), true)
+  await page.locator('#stock-select').selectOption('TSLA')
+  await waitText('Kainos duomenų data:')
+  assert.equal(await page.locator('#stock-select').inputValue(), 'TSLA')
+  assert.equal(await buy().isDisabled(), true)
   databaseUnavailable = false
   await page.getByRole('button', { name: 'Atnaujinti duomenis' }).click()
   await nav('Grafikai')

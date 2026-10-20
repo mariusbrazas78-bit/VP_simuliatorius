@@ -49,7 +49,7 @@ function Trade({ onBack, onTradeCompleted, disabled }) {
         <section className="trade-form-card" aria-labelledby="trade-form-title">
           <div className="trade-card-heading"><div className="trade-heading-icon" aria-hidden="true">↗</div>
             <div><h2 id="trade-form-title">Naujas sandoris</h2><p>Kainos iš bendros akcijų API</p></div></div>
-          <fieldset className="trade-fields" disabled={pending || disabled}>
+          <fieldset className="trade-fields" disabled={pending}>
             <legend className="sr-only">Akcija ir kiekis</legend>
             <label className="trade-label" htmlFor="stock-select">Pasirink akciją</label>
             <div className="select-wrap"><select id="stock-select" value={symbol} onChange={(event) => {
@@ -67,10 +67,11 @@ function Trade({ onBack, onTradeCompleted, disabled }) {
             <small className="field-hint">Teigiamas sveikasis akcijų kiekis.</small>
             <div className="estimated-total"><span><small>NUMATOMA SANDORIO SUMA</small><strong>{total === null ? '—' : money(total)}</strong></span></div>
             <div className="trade-actions">
-              <button className="buy-button" type="button" disabled={loading || !quote || !!quoteError || !validQuantity} onClick={() => submit('BUY')}>BUY <span>(Pirkti)</span></button>
-              <button className="sell-button" type="button" disabled={loading || !quote || !!quoteError || !validQuantity} onClick={() => submit('SELL')}>SELL <span>(Parduoti)</span></button>
+              <button className="buy-button" type="button" disabled={disabled || loading || !quote || !!quoteError || !validQuantity} onClick={() => submit('BUY')}>BUY <span>(Pirkti)</span></button>
+              <button className="sell-button" type="button" disabled={disabled || loading || !quote || !!quoteError || !validQuantity} onClick={() => submit('SELL')}>SELL <span>(Parduoti)</span></button>
             </div>
           </fieldset>
+          {disabled && !pending && <p role="status">Prekybai reikia paskyros duomenų. Palaukite, kol jie bus įkelti, arba spauskite „Atnaujinti duomenis“.</p>}
           {pending && <p role="status">Vykdomas sandoris…</p>}
           {error && <p className="trade-notice integration-error" role="alert">{error}</p>}
           {notice && <p className="trade-notice" role="status">{notice}</p>}
