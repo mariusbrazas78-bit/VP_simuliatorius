@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react'
+import StockChart from './StockChart.jsx'
+import { tradeStockHistoryDemoData } from './chartDemoData.js'
 import './Trade.css'
 
 const stocks = [
-  { symbol: 'AAPL', name: 'Apple Inc.', price: 185, color: 'apple' },
-  { symbol: 'MSFT', name: 'Microsoft Corp.', price: 420, color: 'microsoft' },
-  { symbol: 'NVDA', name: 'NVIDIA Corp.', price: 120, color: 'nvidia' },
+  { symbol: 'AAPL', name: 'Apple Inc.', price: 185, color: 'apple', history: tradeStockHistoryDemoData.AAPL },
+  { symbol: 'MSFT', name: 'Microsoft Corp.', price: 420, color: 'microsoft', history: tradeStockHistoryDemoData.MSFT },
+  { symbol: 'TSLA', name: 'Tesla, Inc.', price: 120, color: 'tsla', history: tradeStockHistoryDemoData.TSLA },
 ]
 
 const money = (amount) => `${amount.toLocaleString('lt-LT', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`
@@ -71,6 +73,11 @@ function Trade({ onBack }) {
           <span className="info-mark" aria-hidden="true">i</span>
           <h2>Mokomoji prekyba</h2>
           <p>Šiame ekrane pateikiamos pavyzdinės kainos. Paspaudus BUY arba SELL, sandoris nebus įvykdytas ir tavo portfelis nepasikeis.</p>
+          <section className="trade-chart" aria-label={`${selectedStock.symbol} kainos grafikas`}>
+            <h3>{selectedStock.symbol} kainos kitimas</h3>
+            <p className="trade-chart-note">Demonstraciniai duomenys · EUR</p>
+            <StockChart history={selectedStock.history} currency="EUR" />
+          </section>
           <div className="info-divider" />
           <div className="info-stat"><span>Pasirinktos akcijos</span><strong>3</strong></div>
           <div className="info-stat"><span>Kainų šaltinis</span><strong>Demonstracinis</strong></div>
