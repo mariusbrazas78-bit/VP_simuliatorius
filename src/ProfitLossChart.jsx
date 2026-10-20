@@ -44,6 +44,7 @@ export default function ProfitLossChart({ data = [] }) {
           strokeLinejoin="round"
           strokeLinecap="round"
         />
+        {data.length === 1 && <circle cx={PADDING} cy={zeroY - (Number(firstPoint.profitLoss) / maxMagnitude) * (chartHeight / 2)} r="4" fill="#7c3aed" />}
       </svg>
       <figcaption>
         {firstPoint.date}: {Number(firstPoint.profitLoss).toFixed(2)} €

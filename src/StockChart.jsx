@@ -5,7 +5,7 @@ const HEIGHT = 260;
 const PADDING = { top: 16, right: 12, bottom: 42, left: 72 };
 const CURRENCY_SYMBOLS = { EUR: '€', USD: '$' };
 
-export default function StockChart({ history = [], currency = 'USD' }) {
+export default function StockChart({ history = [], currency = 'EUR' }) {
   const figureRef = useRef(null);
   const [width, setWidth] = useState(MAX_WIDTH);
 
@@ -101,6 +101,7 @@ export default function StockChart({ history = [], currency = 'USD' }) {
           strokeLinejoin="round"
           strokeLinecap="round"
         />
+        {history.length === 1 && <circle cx={xForIndex(0)} cy={yForPrice(Number(firstPoint.price))} r="4" fill="#2563eb" />}
 
         {xLabelIndexes.map((index) => (
           <text
